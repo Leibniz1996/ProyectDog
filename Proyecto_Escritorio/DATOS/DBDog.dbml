@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Sofware_Dog" Class="DBDogDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Sofware_Dog;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False" SettingsObjectName="Proyecto_Escritorio.Properties.Settings" SettingsPropertyName="Sofware_DogConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Articulos" Member="Articulos">
+    <Type Name="Articulos">
+      <Column Name="cod_articulo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descripcion_articulo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cantidad_articulo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="precio_articulo" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="id_categoria" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Articulos_Detalle" Member="Detalle" ThisKey="cod_articulo" OtherKey="cod_articulo" Type="Detalle" />
+      <Association Name="Categoria_Articulos" Member="Categoria" ThisKey="id_categoria" OtherKey="id_categoria" Type="Categoria" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Categoria" Member="Categoria">
+    <Type Name="Categoria">
+      <Column Name="id_categoria" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nombre_categoria" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Categoria_Articulos" Member="Articulos" ThisKey="id_categoria" OtherKey="id_categoria" Type="Articulos" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Cliente" Member="Cliente">
+    <Type Name="Cliente">
+      <Column Name="cedula_cliente" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nombre_cliente" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="apellido_cliente" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="direccion_cliente" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="telefono_cliente" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="correo_cliente" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Association Name="Cliente_Factura" Member="Factura" ThisKey="cedula_cliente" OtherKey="cedula_cliente" Type="Factura" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Detalle" Member="Detalle">
+    <Type Name="Detalle">
+      <Column Name="id_Detalle" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_factura" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="cod_articulo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="precio" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="cod_dog" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Articulos_Detalle" Member="Articulos" ThisKey="cod_articulo" OtherKey="cod_articulo" Type="Articulos" IsForeignKey="true" />
+      <Association Name="Dogs_Detalle" Member="Dogs" ThisKey="cod_dog" OtherKey="cod_dog" Type="Dogs" IsForeignKey="true" />
+      <Association Name="Factura_Detalle" Member="Factura" ThisKey="id_factura" OtherKey="id_factura" Type="Factura" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Dog_Vacu" Member="Dog_Vacu">
+    <Type Name="Dog_Vacu">
+      <Column Name="id_dogvac" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cod_dog" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_vacunacion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="fecha" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Association Name="Dogs_Dog_Vacu" Member="Dogs" ThisKey="cod_dog" OtherKey="cod_dog" Type="Dogs" IsForeignKey="true" />
+      <Association Name="Vacunacion_Dog_Vacu" Member="Vacunacion" ThisKey="id_vacunacion" OtherKey="id_vacunacion" Type="Vacunacion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Dogs" Member="Dogs">
+    <Type Name="Dogs">
+      <Column Name="cod_dog" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombre_dog" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cod_raza" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="color_dog" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="precio_dog" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="origen_dog" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="sexo_dog" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="pedigree" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="fecha_nacimiento" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Association Name="Dogs_Detalle" Member="Detalle" ThisKey="cod_dog" OtherKey="cod_dog" Type="Detalle" />
+      <Association Name="Dogs_Dog_Vacu" Member="Dog_Vacu" ThisKey="cod_dog" OtherKey="cod_dog" Type="Dog_Vacu" />
+      <Association Name="Razas_Dogs" Member="Razas" ThisKey="cod_raza" OtherKey="cod_raza" Type="Razas" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Factura" Member="Factura">
+    <Type Name="Factura">
+      <Column Name="id_factura" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cedula_cliente" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ruc" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="Factura_Detalle" Member="Detalle" ThisKey="id_factura" OtherKey="id_factura" Type="Detalle" />
+      <Association Name="Cliente_Factura" Member="Cliente" ThisKey="cedula_cliente" OtherKey="cedula_cliente" Type="Cliente" IsForeignKey="true" />
+      <Association Name="Info_Dog_Factura" Member="Info_Dog" ThisKey="ruc" OtherKey="ruc" Type="Info_Dog" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Info_Dog" Member="Info_Dog">
+    <Type Name="Info_Dog">
+      <Column Name="emp_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ruc" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="direccion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Info_Dog_Factura" Member="Factura" ThisKey="ruc" OtherKey="ruc" Type="Factura" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Razas" Member="Razas">
+    <Type Name="Razas">
+      <Column Name="cod_raza" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombre_raza" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Association Name="Razas_Dogs" Member="Dogs" ThisKey="cod_raza" OtherKey="cod_raza" Type="Dogs" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Usuario" Member="Usuario">
+    <Type Name="Usuario">
+      <Column Name="user_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cedula_usuario" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="nombre_usuario" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="apellido_usuario" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="user_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="correoE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="rol" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Vacunacion" Member="Vacunacion">
+    <Type Name="Vacunacion">
+      <Column Name="id_vacunacion" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descripcion_vacunacion" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="Vacunacion_Dog_Vacu" Member="Dog_Vacu" ThisKey="id_vacunacion" OtherKey="id_vacunacion" Type="Dog_Vacu" />
+    </Type>
+  </Table>
+</Database>

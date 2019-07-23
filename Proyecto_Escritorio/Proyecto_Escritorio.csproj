@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AF3C3660-F2C0-4D64-8072-1F1ECF2D3674}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Proyecto_Escritorio</RootNamespace>
+    <AssemblyName>Proyecto_Escritorio</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DATOS\CRUD_Articulos.cs" />
+    <Compile Include="DATOS\CRUD_Cliente.cs" />
+    <Compile Include="DATOS\CRUD_Perros.cs" />
+    <Compile Include="DATOS\CRUD_Raza.cs" />
+    <Compile Include="DATOS\CRUD_Usuario.cs" />
+    <Compile Include="DATOS\CRUD_Vacuna.cs" />
+    <Compile Include="DATOS\CRUD_vacunarPerro.cs" />
+    <Compile Include="DATOS\DBDog.cs">
+      <DependentUpon>DBDog.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DATOS\DBDog.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBDog.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DATOS\ServidorDeCorreo.cs" />
+    <Compile Include="DATOS\SystemSupportMail.cs" />
+    <Compile Include="NEGOCIO\Controlador.cs" />
+    <Compile Include="NEGOCIO\ControladorCliente.cs" />
+    <Compile Include="NEGOCIO\ControladorDog.cs" />
+    <Compile Include="NEGOCIO\ControladorDogVacunado.cs" />
+    <Compile Include="NEGOCIO\ControladorRaza.cs" />
+    <Compile Include="NEGOCIO\ControladorVacuna.cs" />
+    <Compile Include="NEGOCIO\ControladoUsuario.cs" />
+    <Compile Include="NEGOCIO\DatosUsuario.cs" />
+    <Compile Include="VISTA\Articulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VISTA\Articulos.Designer.cs">
+      <DependentUpon>Articulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VISTA\Facturacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VISTA\Facturacion.Designer.cs">
+      <DependentUpon>Facturacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VISTA\frmCategoriaArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VISTA\frmCategoriaArticulo.Designer.cs">
+      <DependentUpon>frmCategoriaArticulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VISTA\frmPerros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VISTA\frmPerros.Designer.cs">
+      <DependentUpon>frmPerros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VISTA\frmRecuperarContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VISTA\frmRecuperarContraseña.Designer.cs">
+      <DependentUpon>frmRecuperarContraseña.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VISTA\frmUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VISTA\frmUsuarios.Designer.cs">
+      <DependentUpon>frmUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VISTA\frmVacunacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VISTA\frmVacunacion.Designer.cs">
+      <DependentUpon>frmVacunacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VISTA\GestionarRazas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VISTA\GestionarRazas.Designer.cs">
+      <DependentUpon>GestionarRazas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VISTA\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VISTA\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VISTA\Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VISTA\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VISTA\Persona.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VISTA\Persona.Designer.cs">
+      <DependentUpon>Persona.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="VISTA\Articulos.resx">
+      <DependentUpon>Articulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VISTA\Facturacion.resx">
+      <DependentUpon>Facturacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VISTA\frmCategoriaArticulo.resx">
+      <DependentUpon>frmCategoriaArticulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VISTA\frmPerros.resx">
+      <DependentUpon>frmPerros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VISTA\frmRecuperarContraseña.resx">
+      <DependentUpon>frmRecuperarContraseña.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VISTA\frmUsuarios.resx">
+      <DependentUpon>frmUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VISTA\frmVacunacion.resx">
+      <DependentUpon>frmVacunacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VISTA\GestionarRazas.resx">
+      <DependentUpon>GestionarRazas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VISTA\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VISTA\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VISTA\Persona.resx">
+      <DependentUpon>Persona.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="DATOS\DBDog.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DBDog.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DATOS\DBDog.dbml.layout">
+      <DependentUpon>DBDog.dbml</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
